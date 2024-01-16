@@ -66,4 +66,10 @@ Tag.belongsToMany(Product, {
 db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
-module.exports = db;
+module.exports = {
+  db,
+  Product,
+  Category,
+  Tag,
+  ProductTag,
+};
