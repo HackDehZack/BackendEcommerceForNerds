@@ -26,4 +26,19 @@ Category.init(
   }
 );
 
-module.exports = Category;
+module.exports = (sequelize, DataTypes) => {
+  class Category extends Model {
+    // Category model definition
+  }
+  // Sequelize model initialization
+  return Category.init(
+    {
+      // Model attributes
+    },
+    {
+      sequelize,
+      modelName: 'Category',
+      // Other model options
+    }
+  );
+};
