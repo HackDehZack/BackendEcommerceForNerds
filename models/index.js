@@ -39,7 +39,7 @@ Object.keys(db).forEach(modelName => {
 
 // Import models
 const Product = db.Product = require('./Product')(sequelize, Sequelize.DataTypes);
-const Category = db.Category = require('./Category')(sequelize, Sequelize.DataTypes);
+const Category = new require('./Category')(sequelize, Sequelize.DataTypes);
 const Tag = db.Tag = require('./Tag')(sequelize, Sequelize.DataTypes);
 const ProductTag = db.ProductTag = require('./ProductTag')(sequelize, Sequelize.DataTypes);
 
