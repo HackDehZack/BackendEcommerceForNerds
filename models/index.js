@@ -16,8 +16,7 @@ if (config.use_env_variable) {
   sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
-fs
-  .readdirSync(__dirname)
+fs.readdirSync(__dirname)
   .filter(file => {
     return (
       file.indexOf('.') !== 0 &&
@@ -38,10 +37,10 @@ Object.keys(db).forEach(modelName => {
 });
 
 // Import models
-const Product = db.Product = require('./Product')(sequelize, Sequelize.DataTypes);
-const Category = db.Category = require('./Category')(sequelize, Sequelize.DataTypes);
-const Tag = db.Tag = require('./Tag')(sequelize, Sequelize.DataTypes);
-const ProductTag = db.ProductTag = require('./ProductTag')(sequelize, Sequelize.DataTypes);
+const Product = require('./Product')(sequelize, Sequelize.DataTypes);
+const Category = require('./Category')(sequelize, Sequelize.DataTypes);
+const Tag = require('./Tag')(sequelize, Sequelize.DataTypes);
+const ProductTag = require('./ProductTag')(sequelize, Sequelize.DataTypes);
 
 // Associations
 Product.belongsTo(Category, {
