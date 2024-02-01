@@ -1,10 +1,3 @@
-/**
- * This is the main server file for the Ecommerce Back End application.
- * It sets up the Express server, imports models, and syncs the Sequelize models to the database.
- * The server listens on the specified port for incoming requests.
- */
-
-
 const express = require('express');
 const routes = require('./routes');
 const sequelize = require('./config/connection');
