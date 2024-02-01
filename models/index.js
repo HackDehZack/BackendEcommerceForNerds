@@ -1,79 +1,27 @@
-'use strict';
+const Product = require("./Product");
+const Category = require("./Category");
+const Tag = require("./Tag");
+const ProductTag = require("./ProductTag");
 
-const fs = require('fs');
-const path = require('path');
-const Sequelize = require('sequelize');
-const process = require('process');
-const basename = path.basename(__filename);
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
-const db = {};
-
-let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
-} else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
-}
-
-fs.readdirSync(__dirname)
-  .filter(file => {
-    return (
-      file.indexOf('.') !== 0 &&
-      file !== basename &&
-      file.slice(-3) === '.js' &&
-      file.indexOf('.test.js') === -1
-    );
-  })
-
-  //  * BUG: The bug is occurring in this section of code.
-  //  * It iterates through each file in the current directory and instantiates the model class.
-  //  * However, there might be an issue with the file path or the model class itself. 
-  
-  fs.readdirSync(__dirname)
-    .forEach(file => {
-      const Model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
-      const modelInstance = new Model(); // Instantiate the model class
-      db[modelInstance.name] = modelInstance; // Add the instance to the db object
-    });
-
-Object.keys(db).forEach(modelName => {
-  if (db[modelName].associate) {
-    db[modelName].associate(db);
-  }
-});
-
-// Import models
-const Product = require('./Product');
-const Category = require('./Category');
-const Tag = require('./Tag');
-const ProductTag = require('./ProductTag');
-
-// Associations
 Product.belongsTo(Category, {
-  foreignKey: 'category_id',
+  foreignKey: "category_id",
 });
 
 Category.hasMany(Product, {
-  foreignKey: 'category_id',
-  onDelete: 'CASCADE',
+  foreignKey: "category_id",
 });
 
 Product.belongsToMany(Tag, {
   through: ProductTag,
-  foreignKey: 'product_id',
+  foreignKey: "product_id"
 });
 
 Tag.belongsToMany(Product, {
   through: ProductTag,
-  foreignKey: 'tag_id',
+  foreignKey: "tag_id"
 });
 
-db.sequelize = sequelize;
-db.Sequelize = Sequelize;
-
 module.exports = {
-  db,
   Product,
   Category,
   Tag,
