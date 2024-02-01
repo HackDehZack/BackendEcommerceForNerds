@@ -1,7 +1,6 @@
 const router = require('express').Router();
 const { Category, Product } = require('../../models');
 
-// The `/api/categories` endpoint
 
 router.get('/', async (req, res) => {
   try {
@@ -34,7 +33,8 @@ router.get('/:id', async (req, res) => {
 router.post('/', async (req, res) => {
   try {
     // Create a new category
-    const category = await Category.create(req.body);
+    const category = new Category(req.body);
+    await category.save();
     res.status(201).json(category);
   } catch (err) {
     res.status(500).json(err);
@@ -44,12 +44,10 @@ router.post('/', async (req, res) => {
 router.put('/:id', async (req, res) => {
   try {
     // Update a category by its `id` value
-    const category = await Category.update(req.body, {
-      where: {
-        id: req.params.id,
-      },
+    const category = await Category.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
     });
-    if (category[0] === 0) {
+    if (!category) {
       res.status(404).json({ message: 'Category not found' });
     } else {
       res.json({ message: 'Category updated successfully' });
@@ -62,11 +60,7 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
   try {
     // Delete a category by its `id` value
-    const category = await Category.destroy({
-      where: {
-        id: req.params.id,
-      },
-    });
+    const category = await Category.findByIdAndDelete(req.params.id);
     if (!category) {
       res.status(404).json({ message: 'Category not found' });
     } else {

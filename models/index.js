@@ -37,10 +37,10 @@ Object.keys(db).forEach(modelName => {
 });
 
 // Import models
-const Product = require('./Product')(sequelize, Sequelize.DataTypes);
-const Category = require('./Category')(sequelize, Sequelize.DataTypes);
-const Tag = require('./Tag')(sequelize, Sequelize.DataTypes);
-const ProductTag = require('./ProductTag')(sequelize, Sequelize.DataTypes);
+const Product = require('./Product');
+const Category = require('./Category');
+const Tag = require('./Tag');
+const ProductTag = require('./ProductTag');
 
 // Associations
 Product.belongsTo(Category, {
