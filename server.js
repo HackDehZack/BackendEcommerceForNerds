@@ -1,3 +1,10 @@
+/**
+ * This is the main server file for the Ecommerce Back End application.
+ * It sets up the Express server, imports models, and syncs the Sequelize models to the database.
+ * The server listens on the specified port for incoming requests.
+ */
+
+
 const express = require('express');
 const routes = require('./routes');
 const sequelize = require('./config/connection');
@@ -11,13 +18,11 @@ const PORT = process.env.PORT || 3001;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-// Add your routes
+// routes bc duh
 app.use(routes);
 
 // Sync sequelize models to the database
-sequelize.sync({ force: false })
-  .then(() => {
+sequelize.sync({ force: false }) .then(() => {
     // Start the server
     app.listen(PORT, () => {
       console.log(`App listening on port ${PORT}!`);
