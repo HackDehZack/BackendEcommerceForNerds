@@ -1,16 +1,11 @@
 require('dotenv').config();
+const { Sequelize } = require('sequelize');
 
-
-// import the Sequelize constructor from the library
-const Sequelize = require('sequelize');
-
+dotenv.config();
 
 // create connection to the db
 const sequelize = process.env.JAWSDB_URL
-
-
   ? new Sequelize(process.env.JAWSDB_URL)
-
   : new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.DB_PASSWORD, {
       host: process.env.DB_HOST,
       dialect: 'mysql',
@@ -19,5 +14,4 @@ const sequelize = process.env.JAWSDB_URL
       },
     });
 
-
-module.exports = sequelize;
+    module.exports = sequelize;
