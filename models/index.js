@@ -25,10 +25,17 @@ fs.readdirSync(__dirname)
       file.indexOf('.test.js') === -1
     );
   })
-  .forEach(file => {
-    const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
-    db[model.name] = model;
-  });
+
+  //  * BUG: The bug is occurring in this section of code.
+  //  * It iterates through each file in the current directory and instantiates the model class.
+  //  * However, there might be an issue with the file path or the model class itself. 
+  
+  fs.readdirSync(__dirname)
+    .forEach(file => {
+      const Model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
+      const modelInstance = new Model(); // Instantiate the model class
+      db[modelInstance.name] = modelInstance; // Add the instance to the db object
+    });
 
 Object.keys(db).forEach(modelName => {
   if (db[modelName].associate) {
