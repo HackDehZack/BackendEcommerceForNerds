@@ -80,9 +80,14 @@ See [models](models/) for full definitions.
 ## Getting Started
 
 Copy the sample .env file and configure with your MySQL user, pass, db name.
+
+
 DB_NAME= db name
+
 DB_USER= user
+
 DB_PASSWORD= password
+
 DB_HOST=localhost (or whichever hosting you're using.)
 
 ## Testing 
