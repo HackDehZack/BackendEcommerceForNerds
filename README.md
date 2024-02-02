@@ -3,11 +3,11 @@
 This REST API powers the backend for an e-commerce site, providing endpoints to manage products, categories and tags through a relational database. Built with Node, Express and Sequelize ORM.
 
 Walkthrough of how to start the server and create data:
-[Untitled_ Feb 2, 2024 11_02 AM.webm](https://github.com/HackDehZack/Module-13-Ecommerce-Back-End/assets/140559436/da95dc7b-3d06-4701-aed6-10f24bbba726)
+[ServerStart.webm](https://github.com/HackDehZack/Module-13-Ecommerce-Back-End/assets/140559436/57e7ecaf-6846-423c-8bba-65ec0b9e7d47)
 
 
 Demonstration of insomnia testing: 
-[Untitled_ Feb 2, 2024 10_33 AM.webm](https://github.com/HackDehZack/Module-13-Ecommerce-Back-End/assets/140559436/09467218-ad0d-4cb3-9d5f-ee87dea243c9)
+[InsomniaTesting.webm](https://github.com/HackDehZack/Module-13-Ecommerce-Back-End/assets/140559436/ba5f4403-f8c9-415b-b38a-697d5af6b4ac)
 
 
 
