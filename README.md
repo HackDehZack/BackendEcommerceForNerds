@@ -2,6 +2,8 @@
 
 This REST API powers the backend for an e-commerce site, providing endpoints to manage products, categories and tags through a relational database. Built with Node, Express and Sequelize ORM.
 
+Walkthrough of how to start the server and create data:
+[Untitled_ Feb 2, 2024 11_02 AM.webm](https://github.com/HackDehZack/Module-13-Ecommerce-Back-End/assets/140559436/da95dc7b-3d06-4701-aed6-10f24bbba726)
 
 
 Demonstration of insomnia testing: 
@@ -30,9 +32,10 @@ Demonstration of insomnia testing:
 2. Run `npm install` to install dependencies
 3. Create a `.env` file (see [Getting Started](#getting-started))
 4. Set up the database:
-   - `npm run schema` to create tables
+   - Remember you need to sign into MySQL!
+   - `source db/schema.sql` to create tables
    - `npm run seed` to populate sample data
-5. Start the server with `npm start`
+6. Start the server with `npm start`
 
 ## Endpoints
 
