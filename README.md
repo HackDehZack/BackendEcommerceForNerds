@@ -23,7 +23,6 @@ Demonstration of insomnia testing:
 - [Relationships](#relationships)
 - [Getting Started](#getting-started)
 - [Testing](#testing)
-- [Contributing](#contributing)
 - [Questions](#questions)
 
 
